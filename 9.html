@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Friends Webserver</title>
+</head>
+<body>
+    <textarea id="copyText" style="display: none;" placeholder="Type something;">
+<?php
+$sum = 0;
+$product = 1;
+
+for ($i = 1; $i <= 10; $i++)
+{
+	$sum += $i;
+	$product *= $i;
+}
+
+echo "The sum of the numbers from 1 to 10 is: " . $sum . "<br>";
+echo "The product of the numbers from 1 to 10 is: " . $product . "<br>";
+?>
+    </textarea>
+
+    <button onclick="copyToClipboard()">Copy</button>
+
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("copyText");
+            copyText.style.display = "block"; // Make the textarea visible
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            copyText.style.display = "none"; // Hide the textarea again
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Friends Webserver</title>
+</head>
+<body>
+    <textarea id="copyText" style="display: none;" placeholder="Type something...">
+<?php
+$num = 7;
+switch ($num)
+{
+	case 1:
+		echo "One";
+		break;
+	case 2:
+		echo "Two";
+		break;
+	case 3:
+		echo "Three";
+		break;
+	case 4:
+		echo "Four";
+		break;
+	case 5:
+		echo "Five";
+		break;
+	case 6:
+	    echo "Six";
+	    break;
+	case 7:
+	    echo "Seven";
+	    break;
+	case 8:
+	    echo "Eight";
+	    break;
+	case 9:
+	    echo "Nine";
+	    break;
+	default:
+		echo "Number is not between 1 to 9.";
+		break;
+}
+?>
+    </textarea>
+
+    <button onclick="copyToClipboard()">Copy</button>
+
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("copyText");
+            copyText.style.display = "block"; // Make the textarea visible
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            copyText.style.display = "none"; // Hide the textarea again
+        }
+    </script>
+</body>
+</html>
