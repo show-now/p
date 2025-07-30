@@ -6,7 +6,7 @@ read -p "Enter the max num: " end
 echo -n "Prime numbers between $start and $end: "
 
 for ((i = start; i <= end; i++)); do
-	if ((i <= 2)); then
+	if ((i < 2)); then
 		continue
 	fi
 
