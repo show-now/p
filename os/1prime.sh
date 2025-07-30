@@ -15,6 +15,7 @@ for ((i = start; i <= end; i++)); do
 	for ((j = 2; j * j <= i; j++)); do
 		if ((i % j == 0)); then
 			prime=0
+   			break
 		fi
 	done
 
