@@ -1,0 +1,30 @@
+CREATE OR REPLACE FUNCTION calc_grade(p_marks NUMBER)
+RETURN VARCHAR2
+IS
+  v_grade VARCHAR2(20);
+BEGIN
+  IF p_marks > 80 THEN
+    v_grade := 'Distinction';
+  ELSIF p_marks BETWEEN 60 AND 79 THEN
+    v_grade := 'First Class';
+  ELSIF p_marks BETWEEN 40 AND 59 THEN
+    v_grade := 'Second Class';
+  ELSE
+    v_grade := 'Fail';
+  END IF;
+
+  RETURN v_grade;
+END;
+/
+
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+  marks  NUMBER := &marks;
+  result VARCHAR2(20);
+BEGIN
+  result := calc_grade(marks);
+  DBMS_OUTPUT.PUT_LINE('Grade: ' || result);
+END;
+/
