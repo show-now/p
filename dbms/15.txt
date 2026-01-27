@@ -1,0 +1,25 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  CURSOR dept_cursor IS
+    SELECT DISTINCT dept_name FROM student;
+
+  v_count NUMBER;
+
+BEGIN
+
+  FOR dept_rec IN dept_cursor LOOP
+
+    SELECT COUNT(*)
+    INTO v_count
+    FROM student
+    WHERE dept_name = dept_rec.dept_name;
+
+    DBMS_OUTPUT.PUT_LINE(
+      'Department: ' || dept_rec.dept_name ||
+      ' -> Students: ' || v_count
+    );
+
+  END LOOP;
+END;
+/
