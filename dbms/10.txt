@@ -1,0 +1,25 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+  numerator   NUMBER;  -- variable to store the first number
+  denominator NUMBER;  -- variable to store the second number
+  result      NUMBER;  -- variable to store the result
+BEGIN
+  -- Accept input from user
+  numerator := &numerator;
+  denominator := &denominator;
+
+  -- Perform division
+  result := numerator / denominator;
+
+  -- Display result
+  DBMS_OUTPUT.PUT_LINE('Result = ' || result);
+
+-- Exception handling section
+EXCEPTION
+  WHEN ZERO_DIVIDE THEN
+    DBMS_OUTPUT.PUT_LINE('Error: Division by zero is not allowed.');
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('An unexpected error occurred.');
+END;
+/
