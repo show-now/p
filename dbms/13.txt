@@ -1,0 +1,38 @@
+SET SERVEROUTPUT ON;
+
+CREATE OR REPLACE PROCEDURE Update_Student_Marks (
+  p_RollNo    IN NUMBER,
+  p_NewMarks IN NUMBER
+)
+AS
+BEGIN
+  UPDATE STUDENT
+  SET Marks = p_NewMarks
+  WHERE RollNo = p_RollNo;
+
+  IF SQL%ROWCOUNT = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('No student found with RollNo: ' || p_RollNo);
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Marks updated successfully for RollNo: ' || p_RollNo);
+  END IF;
+
+  COMMIT;
+
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    ROLLBACK;
+END;
+/
+
+
+DECLARE
+  v_RollNo   NUMBER := &RollNo;
+  v_NewMarks NUMBER := &NewMarks;
+BEGIN
+  Update_Student_Marks(v_RollNo, v_NewMarks);
+END;
+/
+
+
+SELECT * FROM STUDENT WHERE RollNo = &RollNo;
