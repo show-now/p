@@ -1,0 +1,9 @@
+CREATE OR REPLACE TRIGGER Check_Negative_Marks
+BEFORE INSERT ON Student
+FOR EACH ROW
+BEGIN
+  IF :NEW.Marks < 0 THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Marks cannot be negative.');
+  END IF;
+END;
+/
