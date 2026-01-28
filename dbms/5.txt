@@ -1,3 +1,4 @@
+
 SELECT Name, Marks FROM STUDENT WHERE Marks > (SELECT AVG(Marks) FROM STUDENT);
 
 SELECT Name FROM STUDENT WHERE Department = (SELECT CourseName FROM COURSE WHERE CourseName = 'BCA');
