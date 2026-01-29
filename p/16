@@ -4,7 +4,14 @@ students = ['Arjuna', 'Bheema', 'Chirag', 'Dhruv', 'Eesho']
 marks = [85, 90, 70, 95, 80]
 
 plt.figure(figsize=(6, 4))
-plt.plot(students, marks, color='blue')
+plt.plot(
+    students,
+    marks,
+    marker='o',
+    color='blue',
+    linestyle='-',
+    linewidth=2
+)
 plt.title("Student Marks - Line Graph")
 plt.xlabel("Students")
 plt.ylabel("Marks")
