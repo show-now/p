@@ -1,0 +1,20 @@
+list = [10, 20, 30, 40, 50, 60]
+
+print("Original list:", list)
+
+print("Insert into the list")
+pos = int(input("Enter the position: "))
+value = int(input("Enter the value: "))
+list.insert(pos, value)
+print("List after inserting:", list)
+
+print("Update an element in the list")
+pos = int(input("Enter the position to update: "))
+value = int(input("Enter the value to update: "))
+list[pos] = value
+print("List after updating:", list)
+
+print("Delete an element from the list")
+pos = int(input("Enter the position: "))
+list.pop(pos)
+print("List after deletion:", list)
