@@ -1,0 +1,20 @@
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4, 5, 6])
+arr2 = np.array([10, 20, 30, 40, 50, 60])
+
+add = arr1 + arr2
+sub = arr1 - arr2
+mul = arr1 * arr2
+div = arr1 / arr2
+
+reshape1 = arr1.reshape(2, 3)
+reshape2 = arr2.reshape(3, 2)
+
+print("Addition:", add)
+print("Subtraction:", sub)
+print("Multiplication:", mul)
+print("Division:", div)
+
+print("Reshaped Array 1 (2, 3):\n", reshape1)
+print("Reshaped Array 2 (3, 2):\n", reshape2)
