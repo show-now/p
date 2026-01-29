@@ -1,0 +1,24 @@
+employees = {
+    101: "Sreeju",
+    102: "Alice",
+    103: "John"
+}
+
+print("Initial employees:", employees)
+
+print("Insert a new employee:")
+eid = int(input("Enter the employee ID: "))
+ename = input("Enter the name: ")
+employees[eid] = ename
+print("After inserting:", employees)
+
+print("Update an employee:")
+eid = int(input("Enter the employee ID: "))
+ename = input("Enter the new name: ")
+employees[eid] = ename
+print("After updating:", employees)
+
+print("Delete an employee:")
+eid = int(input("Enter the employee ID: "))
+employees.pop(eid)
+print("After deleting:", employees)
