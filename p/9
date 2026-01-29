@@ -1,0 +1,13 @@
+import pandas as pd
+
+df = pd.read_csv("Book1.csv")
+print(df)
+
+print("Filter by age")
+print(df.sort_values(by="Age"))
+
+print("Filter by marks")
+print(df.sort_values(by="Marks"))
+
+print("Only students with marks > 25")
+print(df[df["Marks"] > 25])
