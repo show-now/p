@@ -1,0 +1,27 @@
+n = int(input("Enter the number of students: "))
+
+students = {}
+
+for i in range(n):
+    print(f"Enter the details of student {i + 1}")
+    roll = int(input("Roll No: "))
+    name = input("Name: ")
+    dept = input("Department: ")
+    marks = input("Marks: ")
+
+    students[roll] = {
+        "name": name,
+        "dept": dept,
+        "marks": marks
+    }
+
+print("--- RETRIEVE STUDENT DETAILS ---")
+roll_no = int(input("Enter the Roll No: "))
+
+if roll_no in students:
+    print("Roll No:", roll_no)Add line graph and bar chart for student marks
+    print("Name:", students[roll_no]["name"])
+    print("Department:", students[roll_no]["dept"])
+    print("Marks:", students[roll_no]["marks"])
+else:
+    print("Student not found")
