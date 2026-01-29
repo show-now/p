@@ -1,0 +1,23 @@
+print("Break demo using loops")
+for i in range(1, 6):
+    if i == 3:
+        print("Break when the iteration is 3")
+        break
+    print(i)
+
+
+print("\nContinue demo using loops")
+for i in range(1, 6):
+    if i == 3:
+        print("Continue when the iteration is 3")
+        continue
+    print(i)
+
+
+print("\nPass demo using loops")
+for i in range(1, 6):
+    if i == 3:
+        print("Pass when the iteration is 3")
+    if i == 3:
+        pass
+    print(i)
