@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Newsletter Subscription</title>
+	</head>
+	<body>
+		<script>
+		function news(){
+			alert("Welcome to the newsletter");
+			
+			confirmation = confirm("Would you like to subscribe to the newsletter");
+			
+			if (confirmation){
+					email = prompt("Enter your email: ");
+					
+					if (email){
+						alert("Confirmation sended to the " + email);
+					} else {
+						alert("You didn't provide an eamil");
+					}
+					
+			} else {
+				alert("No problem you can always subscribe later");
+			}
+		}
+		
+		news();
+		</script>
+	</body>
+</html>

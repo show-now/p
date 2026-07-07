@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Form Validation</title>
+		<script>
+			function validate(){
+				var name = document.forms["registration"]["name"].value;
+				var email = document.forms["registration"]["email"].value;
+				var pass = document.forms["registration"]["password"].value;
+				
+				if (name == "" || email == "" || pass == ""){
+					alert("Fill all the forms");
+					return false;
+				}
+				
+				var re = /\S+@\S+\.\S+/;
+				if (!re.test(email)) {
+					alert("Invalid eamil");
+					return false;
+				}
+				
+				if (pass.length < 6){
+					alert("Password length should be more than 6 characters");
+					return false;
+				}
+				
+				alert("Registration Successful");
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="registration" onsubmit="return validate()">
+			<label for="name">Name: </label>
+			<input name="name" type="text" id="name"><br><br>
+			
+			<label for="email">Email: </label>
+			<input name="email" type="email" id="email"><br><br>
+			
+			<label for="password">Password:</label>
+			<input name=password" type="password" id="password"><br><br>
+			
+			<input type="submit" value="Register">
+		</form>
+	</body>
+</html>
