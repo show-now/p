@@ -1,17 +1,7 @@
-graph = {
-    '1': ['2', '3'],
-    '2': ['4', '5'],
-    '3': ['6', '7'],
-    '4': [],
-    '5': [],
-    '6': [],
-    '7': []
-}
-
-queue = []
-visited = []
-
-def bfs(visited, graph, node):
+def bfs(graph, node):
+	queue = []
+	visited = []
+	
 	visited.append(node)
 	queue.append(node)
 	
@@ -24,5 +14,15 @@ def bfs(visited, graph, node):
 				visited.append(neighbour)
 				queue.append(neighbour)
 
+graph = {
+    '1': ['2', '3'],
+    '2': ['4', '5'],
+    '3': ['6', '7'],
+    '4': [],
+    '5': [],
+    '6': [],
+    '7': []
+}
+
 print("BFS")
-bfs(visited, graph, '1')
+bfs(graph, '1')
