@@ -1,7 +1,7 @@
 def subset(arr, target, ans=[]):
 
     if target == 0:
-        print(ans)
+        print(f"The subsets are {ans} and {ans[::-1]}")
         return True
 
     if len(arr) == 0 or target < 0:
