@@ -13,7 +13,7 @@ def subset(arr, target, ans=[]):
         subset(arr[1:], target, ans)
     )
 
-arr = [1, 2, 5, 6, 8]
+arr = [1, 2, 5, 6]
 target = 9
 
 if not subset(arr, target):

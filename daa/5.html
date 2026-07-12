@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program 5 - Divide & Conquer Max Min</title>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <a href="index">← Home</a> | 
+        <a href="4" >&lt; Previous</a> | 
+        <select onchange="location = this.value;">
+            <option value="1" >Program 1: Linear Search</option>
+            <option value="2" >Program 2: Binary Search</option>
+            <option value="3" >Program 3: Tower of Hanoi</option>
+            <option value="4" >Program 4: Selection Sort</option>
+            <option value="5" selected>Program 5: Divide & Conquer Max Min</option>
+            <option value="6" >Program 6: Quick Sort</option>
+            <option value="7" >Program 7: Optimal Binary Search Tree</option>
+            <option value="8" >Program 8: Floyd-Warshall Algorithm</option>
+            <option value="9" >Program 9: Boyer-Moore Pattern Matching</option>
+            <option value="10" >Program 10: Breadth First Search (BFS)</option>
+            <option value="11" >Program 11: Prim's Minimum Spanning Tree</option>
+            <option value="12" >Program 12: Kruskal's Minimum Spanning Tree</option>
+            <option value="13" >Program 13: Subset Sum Problem</option>
+        </select> | 
+        <a href="6" >Next &gt;</a>
+    </div>
+    
+    <h1>Program 5: Divide & Conquer Max Min</h1>
+    <p><strong>Time Complexity:</strong> O(N) | <strong>Space Complexity:</strong> O(log N) recursion stack</p>
+    
+    <div style="margin-bottom: 10px;">
+        <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+    
+    <hr>
+    
+    <pre id="code-block">def find_min_max(arr, low, high):
+	if low == high:
+		return arr[low], arr[high]
+	
+	if high == low + 1:
+		if arr[low] &lt; arr[high]:
+			return arr[low], arr[high]
+		else:
+			return arr[high], arr[low]
+	
+	mid = (low + high) // 2
+	
+	min1, max1 = find_min_max(arr, low, mid)
+	min2, max2 = find_min_max(arr, mid + 1, high)
+	
+	minimum = min(min1, min2)
+	maximum = max(max1, max2)
+
+	return minimum, maximum
+
+arr = [29, 47, 84, 37, 578, 23, 2]
+minimum, maximum = find_min_max(arr, 0, len(arr) - 1)
+print(&quot;Minimum: &quot;, minimum)
+print(&quot;Maximum: &quot;, maximum)
+</pre>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(function() {
+                    btn.innerText = 'Copy Code';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy code: ', err);
+            });
+        }
+
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+            document.querySelectorAll('select option').forEach(function(opt) {
+                var val = opt.getAttribute('value');
+                if (val && !val.endsWith('.html') && val !== '#') {
+                    opt.setAttribute('value', val + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

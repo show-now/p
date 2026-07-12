@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program 3 - Tower of Hanoi</title>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <a href="index">← Home</a> | 
+        <a href="2" >&lt; Previous</a> | 
+        <select onchange="location = this.value;">
+            <option value="1" >Program 1: Linear Search</option>
+            <option value="2" >Program 2: Binary Search</option>
+            <option value="3" selected>Program 3: Tower of Hanoi</option>
+            <option value="4" >Program 4: Selection Sort</option>
+            <option value="5" >Program 5: Divide & Conquer Max Min</option>
+            <option value="6" >Program 6: Quick Sort</option>
+            <option value="7" >Program 7: Optimal Binary Search Tree</option>
+            <option value="8" >Program 8: Floyd-Warshall Algorithm</option>
+            <option value="9" >Program 9: Boyer-Moore Pattern Matching</option>
+            <option value="10" >Program 10: Breadth First Search (BFS)</option>
+            <option value="11" >Program 11: Prim's Minimum Spanning Tree</option>
+            <option value="12" >Program 12: Kruskal's Minimum Spanning Tree</option>
+            <option value="13" >Program 13: Subset Sum Problem</option>
+        </select> | 
+        <a href="4" >Next &gt;</a>
+    </div>
+    
+    <h1>Program 3: Tower of Hanoi</h1>
+    <p><strong>Time Complexity:</strong> O(2^N) | <strong>Space Complexity:</strong> O(N) recursion stack</p>
+    
+    <div style="margin-bottom: 10px;">
+        <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+    
+    <hr>
+    
+    <pre id="code-block">def tower_of_hanoi(n, src, tar, aux):
+	if n == 1:
+		print(f&quot;Moving disk from {src} to {tar}&quot;)
+		return
+	
+	tower_of_hanoi(n - 1, src, aux, tar)
+	print(f&quot;Moving disk from {src} to {tar}&quot;)
+	tower_of_hanoi(n - 1, aux, tar, src)
+	
+num = int(input(&quot;Enter number of disk: &quot;))
+tower_of_hanoi(num, &#x27;A&#x27;, &#x27;C&#x27;, &#x27;B&#x27;)
+</pre>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(function() {
+                    btn.innerText = 'Copy Code';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy code: ', err);
+            });
+        }
+
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+            document.querySelectorAll('select option').forEach(function(opt) {
+                var val = opt.getAttribute('value');
+                if (val && !val.endsWith('.html') && val !== '#') {
+                    opt.setAttribute('value', val + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program 7 - Optimal Binary Search Tree</title>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <a href="index">← Home</a> | 
+        <a href="6" >&lt; Previous</a> | 
+        <select onchange="location = this.value;">
+            <option value="1" >Program 1: Linear Search</option>
+            <option value="2" >Program 2: Binary Search</option>
+            <option value="3" >Program 3: Tower of Hanoi</option>
+            <option value="4" >Program 4: Selection Sort</option>
+            <option value="5" >Program 5: Divide & Conquer Max Min</option>
+            <option value="6" >Program 6: Quick Sort</option>
+            <option value="7" selected>Program 7: Optimal Binary Search Tree</option>
+            <option value="8" >Program 8: Floyd-Warshall Algorithm</option>
+            <option value="9" >Program 9: Boyer-Moore Pattern Matching</option>
+            <option value="10" >Program 10: Breadth First Search (BFS)</option>
+            <option value="11" >Program 11: Prim's Minimum Spanning Tree</option>
+            <option value="12" >Program 12: Kruskal's Minimum Spanning Tree</option>
+            <option value="13" >Program 13: Subset Sum Problem</option>
+        </select> | 
+        <a href="8" >Next &gt;</a>
+    </div>
+    
+    <h1>Program 7: Optimal Binary Search Tree</h1>
+    <p><strong>Time Complexity:</strong> O(N^3) | <strong>Space Complexity:</strong> O(N^2)</p>
+    
+    <div style="margin-bottom: 10px;">
+        <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+    
+    <hr>
+    
+    <pre id="code-block">def optimal_bst(freq, n):
+    cost = [[0] * n for _ in range(n)]
+
+    for i in range(n):
+        cost[i][i] = freq[i]
+
+    for L in range(2, n + 1):
+        for i in range(n - L + 1):
+            j = i + L - 1
+
+            cost[i][j] = float(&#x27;inf&#x27;)
+
+            total_freq = sum(freq[i:j + 1])
+
+            for r in range(i, j + 1):
+
+                left = cost[i][r - 1] if r &gt; i else 0
+                right = cost[r + 1][j] if r &lt; j else 0
+                
+                current_cost = left + right + total_freq
+                cost[i][j] = min(cost[i][j], current_cost)
+
+    return cost[0][n - 1]
+
+
+freq = [34, 8, 50]
+n = len(freq)
+
+print(&quot;Optimal BST Cost:&quot;, optimal_bst(freq, n))
+</pre>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(function() {
+                    btn.innerText = 'Copy Code';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy code: ', err);
+            });
+        }
+
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+            document.querySelectorAll('select option').forEach(function(opt) {
+                var val = opt.getAttribute('value');
+                if (val && !val.endsWith('.html') && val !== '#') {
+                    opt.setAttribute('value', val + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

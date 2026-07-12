@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DAA Lab Programs Directory</title>
+</head>
+<body>
+    <h1>DAA Lab Programs Directory</h1>
+    <p>Select a program to view its implementation and details:</p>
+    <hr>
+    <ol>
+        <li><strong><a href="1">Program 1: Linear Search</a></strong><br>Time Complexity: O(N) | Space Complexity: O(N)</li><br>
+        <li><strong><a href="2">Program 2: Binary Search</a></strong><br>Time Complexity: O(log N) | Space Complexity: O(N)</li><br>
+        <li><strong><a href="3">Program 3: Tower of Hanoi</a></strong><br>Time Complexity: O(2^N) | Space Complexity: O(N) recursion stack</li><br>
+        <li><strong><a href="4">Program 4: Selection Sort</a></strong><br>Time Complexity: O(N^2) | Space Complexity: O(N)</li><br>
+        <li><strong><a href="5">Program 5: Divide & Conquer Max Min</a></strong><br>Time Complexity: O(N) | Space Complexity: O(log N) recursion stack</li><br>
+        <li><strong><a href="6">Program 6: Quick Sort</a></strong><br>Time Complexity: O(N log N) average | Space Complexity: O(N)</li><br>
+        <li><strong><a href="7">Program 7: Optimal Binary Search Tree</a></strong><br>Time Complexity: O(N^3) | Space Complexity: O(N^2)</li><br>
+        <li><strong><a href="8">Program 8: Floyd-Warshall Algorithm</a></strong><br>Time Complexity: O(V^3) | Space Complexity: O(V^2)</li><br>
+        <li><strong><a href="9">Program 9: Boyer-Moore Pattern Matching</a></strong><br>Time Complexity: O(N * M) worst / O(N / M) best | Space Complexity: O(1)</li><br>
+        <li><strong><a href="10">Program 10: Breadth First Search (BFS)</a></strong><br>Time Complexity: O(V + E) | Space Complexity: O(V)</li><br>
+        <li><strong><a href="11">Program 11: Prim's Minimum Spanning Tree</a></strong><br>Time Complexity: O(E log V) | Space Complexity: O(V + E)</li><br>
+        <li><strong><a href="12">Program 12: Kruskal's Minimum Spanning Tree</a></strong><br>Time Complexity: O(E log E) | Space Complexity: O(V + E)</li><br>
+        <li><strong><a href="13">Program 13: Subset Sum Problem</a></strong><br>Time Complexity: O(2^N) | Space Complexity: O(N) recursion stack</li><br>
+    </ol>
+
+    <script>
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

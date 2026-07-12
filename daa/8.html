@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program 8 - Floyd-Warshall Algorithm</title>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <a href="index">← Home</a> | 
+        <a href="7" >&lt; Previous</a> | 
+        <select onchange="location = this.value;">
+            <option value="1" >Program 1: Linear Search</option>
+            <option value="2" >Program 2: Binary Search</option>
+            <option value="3" >Program 3: Tower of Hanoi</option>
+            <option value="4" >Program 4: Selection Sort</option>
+            <option value="5" >Program 5: Divide & Conquer Max Min</option>
+            <option value="6" >Program 6: Quick Sort</option>
+            <option value="7" >Program 7: Optimal Binary Search Tree</option>
+            <option value="8" selected>Program 8: Floyd-Warshall Algorithm</option>
+            <option value="9" >Program 9: Boyer-Moore Pattern Matching</option>
+            <option value="10" >Program 10: Breadth First Search (BFS)</option>
+            <option value="11" >Program 11: Prim's Minimum Spanning Tree</option>
+            <option value="12" >Program 12: Kruskal's Minimum Spanning Tree</option>
+            <option value="13" >Program 13: Subset Sum Problem</option>
+        </select> | 
+        <a href="9" >Next &gt;</a>
+    </div>
+    
+    <h1>Program 8: Floyd-Warshall Algorithm</h1>
+    <p><strong>Time Complexity:</strong> O(V^3) | <strong>Space Complexity:</strong> O(V^2)</p>
+    
+    <div style="margin-bottom: 10px;">
+        <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+    
+    <hr>
+    
+    <pre id="code-block">INF = 999
+
+g = [
+	[0, 5, INF],
+	[INF, 0, 3],
+	[0, 2, INF]
+]
+
+n = len(g)
+
+for k in range(n):
+	for i in range(n):
+		for j in range(n):
+			g[i][j] = min(g[i][j], g[i][k] + g[k][j])
+			
+for i in g:
+	print(i)
+</pre>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(function() {
+                    btn.innerText = 'Copy Code';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy code: ', err);
+            });
+        }
+
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+            document.querySelectorAll('select option').forEach(function(opt) {
+                var val = opt.getAttribute('value');
+                if (val && !val.endsWith('.html') && val !== '#') {
+                    opt.setAttribute('value', val + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

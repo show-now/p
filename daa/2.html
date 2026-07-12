@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program 2 - Binary Search</title>
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <a href="index">← Home</a> | 
+        <a href="1" >&lt; Previous</a> | 
+        <select onchange="location = this.value;">
+            <option value="1" >Program 1: Linear Search</option>
+            <option value="2" selected>Program 2: Binary Search</option>
+            <option value="3" >Program 3: Tower of Hanoi</option>
+            <option value="4" >Program 4: Selection Sort</option>
+            <option value="5" >Program 5: Divide & Conquer Max Min</option>
+            <option value="6" >Program 6: Quick Sort</option>
+            <option value="7" >Program 7: Optimal Binary Search Tree</option>
+            <option value="8" >Program 8: Floyd-Warshall Algorithm</option>
+            <option value="9" >Program 9: Boyer-Moore Pattern Matching</option>
+            <option value="10" >Program 10: Breadth First Search (BFS)</option>
+            <option value="11" >Program 11: Prim's Minimum Spanning Tree</option>
+            <option value="12" >Program 12: Kruskal's Minimum Spanning Tree</option>
+            <option value="13" >Program 13: Subset Sum Problem</option>
+        </select> | 
+        <a href="3" >Next &gt;</a>
+    </div>
+    
+    <h1>Program 2: Binary Search</h1>
+    <p><strong>Time Complexity:</strong> O(log N) | <strong>Space Complexity:</strong> O(N)</p>
+    
+    <div style="margin-bottom: 10px;">
+        <button id="copy-btn" onclick="copyCode()">Copy Code</button>
+    </div>
+    
+    <hr>
+    
+    <pre id="code-block">import time
+import matplotlib.pyplot as plt
+
+def binary_search(arr, x):
+	left = 0
+	right = len(arr) - 1
+	
+	while left &lt;= right:
+		mid = (left + right) // 2
+		
+		if arr[mid] == x:
+			return mid
+		elif arr[mid] &gt; x:
+			right = mid + 1
+		else:
+			left = mid - 1
+	
+	return -1
+	
+arr_list = [100, 500, 1000, 2000, 5000]
+time_list = []
+
+for n in arr_list:
+	arr = []
+	for i in range(n):
+		arr.append(i)
+	
+	x = n // 2
+	
+	start = time.perf_counter()
+	binary_search(arr, x)
+	end = time.perf_counter()
+	
+	time_list.append(end - start)
+	
+print(arr_list)
+plt.plot(arr_list, time_list)
+plt.xlabel(&quot;Array Size&quot;)
+plt.ylabel(&quot;Time Taken&quot;)
+plt.title(&quot;Binary Search&quot;)
+plt.show()
+</pre>
+
+    <script>
+        function copyCode() {
+            var code = document.getElementById('code-block').innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                var btn = document.getElementById('copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(function() {
+                    btn.innerText = 'Copy Code';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy code: ', err);
+            });
+        }
+
+        // Dynamic file:// protocol handler
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('a').forEach(function(a) {
+                var href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    a.setAttribute('href', href + '.html');
+                }
+            });
+            document.querySelectorAll('select option').forEach(function(opt) {
+                var val = opt.getAttribute('value');
+                if (val && !val.endsWith('.html') && val !== '#') {
+                    opt.setAttribute('value', val + '.html');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
